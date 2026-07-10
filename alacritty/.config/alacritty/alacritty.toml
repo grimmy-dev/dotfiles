@@ -1,0 +1,66 @@
+# -----------------------------------------------------------------------------
+# General Settings
+# -----------------------------------------------------------------------------
+[env]
+TERM = "xterm-256color"
+
+[general]
+live_config_reload = true
+import = ["~/.config/alacritty/themes/themes/nightfox.toml"]
+
+# -----------------------------------------------------------------------------
+# Window Customization
+# -----------------------------------------------------------------------------
+[window]
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+opacity = 0.95
+startup_mode = "Fullscreen"
+decorations = "none"
+dimensions = { columns = 160, lines = 44 }
+
+# -----------------------------------------------------------------------------
+# Font Configuration
+# -----------------------------------------------------------------------------
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+size = 12
+
+# -----------------------------------------------------------------------------
+# Scrolling
+# -----------------------------------------------------------------------------
+[scrolling]
+history = 10000
+multiplier = 3
+
+# -----------------------------------------------------------------------------
+# Shell
+# -----------------------------------------------------------------------------
+[terminal.shell]
+program = "/usr/bin/zsh"
+args = ["--login"]
+
+# -----------------------------------------------------------------------------
+# Keybindings (productivity)
+# -----------------------------------------------------------------------------
+[keyboard]
+bindings = [
+  # Font size control — quick zoom in/out without touching config
+  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+  { key = "Key0", mods = "Control", action = "ResetFontSize" },
+
+  # Clipboard — explicit binds so copy/paste always work regardless of DE
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+
+  # Spawn a new Alacritty instance (independent window, not a tab)
+  { key = "N", mods = "Control|Shift", action = "SpawnNewInstance" },
+
+  # Clear scrollback — useful after noisy build/test output
+  { key = "L", mods = "Control|Shift", action = "ClearHistory" },
+
+]
