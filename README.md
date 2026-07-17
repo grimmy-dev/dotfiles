@@ -11,6 +11,9 @@ Personal, reproducible dev environment config — managed with [GNU Stow](https:
 | Neovim (LazyVim) | `nvim/.config/nvim/` | `~/.config/nvim/` |
 | Starship | `starship/.config/starship.toml` | `~/.config/starship.toml` |
 | Zsh | `zsh/.zshrc` | `~/.zshrc` |
+| Claude Code | `claude/.claude/` | `~/.claude/statusline-command.sh` + custom skills |
+
+The full nvim config lives here (`lazy-lock.json` pinned for reproducible plugins), so there's no separate LazyVim clone step. Marketplace Claude skills and the caveman plugin reinstall themselves, so only my own skills are stored.
 
 Theme: [nightfox](https://github.com/EdenEast/nightfox.nvim) across Alacritty, tmux, and the terminal prompt. Font: JetBrainsMono Nerd Font.
 
@@ -22,17 +25,17 @@ cd ~/dotfiles
 ./install.sh
 ```
 
-`install.sh` will:
-1. Install base system packages (zsh, tmux, neovim, stow, git) via `dnf` (Fedora) or `brew` (macOS)
-2. Install rustup + cargo, and set up rust-analyzer
-3. Install Alacritty via `cargo install`
-4. Install `uv` and `bun`
-5. Install Starship prompt
-6. Install Oh My Zsh + `zsh-autosuggestions` + `zsh-syntax-highlighting`
-7. Install JetBrainsMono Nerd Font
-8. Install LazyVim starter (only if `~/.config/nvim` doesn't already exist)
-9. Set zsh as the default shell
-10. Symlink every config in this repo into place using Stow
+`install.sh` runs with `set -euo pipefail` and prints `[n/10]` progress headers. It will:
+1. Install base packages (zsh, tmux, neovim, stow, git, curl, jq, alacritty) via `dnf` (Fedora) or `brew` (macOS)
+2. Install rustup + rust-analyzer
+3. Install Starship prompt
+4. Install Oh My Zsh + `zsh-autosuggestions` + `zsh-syntax-highlighting`
+5. Install JetBrainsMono Nerd Font (macOS gets it from a cask)
+6. Set zsh as the default shell
+7. Symlink every package into place with `stow -R` (backs up any real config already there)
+8. Reinstall the caveman plugin via the Claude Code CLI
+9. Merge only the `statusLine` key into `~/.claude/settings.json` (rest untouched)
+10. Point `~/.claude/CLAUDE.md` at `AGENTS.md`
 
 The script is idempotent — safe to re-run any time. Existing installs are skipped, not reinstalled.
 
@@ -42,7 +45,7 @@ If you only want to (re)link a single tool's config instead of running the full 
 
 ```bash
 cd ~/dotfiles
-stow alacritty   # or tmux, nvim, starship, zsh
+stow alacritty   # or tmux, nvim, starship, zsh, claude
 ```
 
 To remove a symlinked config:
@@ -58,6 +61,18 @@ stow -D <package>
 2. `mv` the real config file into that folder
 3. `stow <tool>` from inside `~/dotfiles`
 4. `git add . && git commit`
+
+## Agent rules
+
+`AGENTS.md` is the single source of truth for how coding agents work on my repos, and `STANDARDS.md` holds the coding standards it references. Both are cross-tool (Cursor, Codex, etc. read `AGENTS.md` directly).
+
+Claude Code reads `CLAUDE.md`, not `AGENTS.md`, so `install.sh` writes a global `~/.claude/CLAUDE.md` with a single import line:
+
+```
+@~/dotfiles/AGENTS.md
+```
+
+That pulls the rules into every session, every repo — no per-project file needed.
 
 ## Notes
 
