@@ -1,0 +1,12 @@
+# Secrets — never commit
+.credentials.json
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.log
+
+# OS cruft
+.DS_Store
