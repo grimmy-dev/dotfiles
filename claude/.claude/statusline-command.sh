@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Code statusline — context usage % + token counts + caveman mode badge
+# Claude Code statusline - context usage % + token counts + caveman mode badge
 # Styled to match the dark-ansi PS1 theme (muted separators, orange caveman badge).
 
 # Resolve the caveman plugin hook by glob so it survives version/hash changes.

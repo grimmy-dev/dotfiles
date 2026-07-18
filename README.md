@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal, reproducible dev environment config — managed with [GNU Stow](https://www.gnu.org/software/stow/), bootstrapped with a single install script.
+Personal, reproducible dev environment config - managed with [GNU Stow](https://www.gnu.org/software/stow/), bootstrapped with a single install script.
 
 ## What's inside
 
@@ -20,7 +20,7 @@ Theme: [nightfox](https://github.com/EdenEast/nightfox.nvim) across Alacritty, t
 ## Fresh machine setup
 
 ```bash
-git clone <your-repo-url> ~/dotfiles
+git clone https://github.com/grimmy-dev/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh
 ```
@@ -37,7 +37,7 @@ cd ~/dotfiles
 9. Merge only the `statusLine` key into `~/.claude/settings.json` (rest untouched)
 10. Point `~/.claude/CLAUDE.md` at `AGENTS.md`
 
-The script is idempotent — safe to re-run any time. Existing installs are skipped, not reinstalled.
+The script is idempotent - safe to re-run any time. Existing installs are skipped, not reinstalled.
 
 ## Manual Stow usage
 
@@ -72,7 +72,7 @@ Claude Code reads `CLAUDE.md`, not `AGENTS.md`, so `install.sh` writes a global 
 @~/dotfiles/AGENTS.md
 ```
 
-That pulls the rules into every session, every repo — no per-project file needed.
+That pulls the rules into every session, every repo - no per-project file needed.
 
 ## Notes
 

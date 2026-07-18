@@ -48,19 +48,19 @@ args = ["--login"]
 # -----------------------------------------------------------------------------
 [keyboard]
 bindings = [
-  # Font size control — quick zoom in/out without touching config
+  # Font size control - quick zoom in/out without touching config
   { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
   { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
   { key = "Key0", mods = "Control", action = "ResetFontSize" },
 
-  # Clipboard — explicit binds so copy/paste always work regardless of DE
+  # Clipboard - explicit binds so copy/paste always work regardless of DE
   { key = "C", mods = "Control|Shift", action = "Copy" },
   { key = "V", mods = "Control|Shift", action = "Paste" },
 
   # Spawn a new Alacritty instance (independent window, not a tab)
   { key = "N", mods = "Control|Shift", action = "SpawnNewInstance" },
 
-  # Clear scrollback — useful after noisy build/test output
+  # Clear scrollback - useful after noisy build/test output
   { key = "L", mods = "Control|Shift", action = "ClearHistory" },
 
 ]

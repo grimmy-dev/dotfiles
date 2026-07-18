@@ -4,7 +4,7 @@ These are common instructions for Karthik's agents across all scenarios.
 
 ## General Guidelines
 
-- Never use the em dash "-", use plain dash "-" instead
+- Never use the em dash "—", use plain dash "-" instead
 - When writing commit messages, never auto-add your agent name as co-author
 - Never commit or push without asking first, show the diff/summary and wait for a go-ahead
 - When making technical decisions, do not give much weight to development cost.

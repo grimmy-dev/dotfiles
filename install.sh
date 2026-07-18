@@ -110,6 +110,7 @@ jq --arg cmd "bash \$HOME/.claude/statusline-command.sh" \
 
 # 10. Global agent rules: CLAUDE.md just points Claude Code at the canonical AGENTS.md
 step "Pointing ~/.claude/CLAUDE.md at AGENTS.md"
-printf '@%s/AGENTS.md\n' "${DOTFILES/#$HOME/~}" > "$HOME/.claude/CLAUDE.md"
+# tilde stays literal here; bash would expand it if used in a ${var/pat/repl} replacement
+printf '@~/%s/AGENTS.md\n' "${DOTFILES#$HOME/}" > "$HOME/.claude/CLAUDE.md"
 
 printf '\n\033[1;32m==> Done.\033[0m Restart your shell for all changes to take effect.\n'
