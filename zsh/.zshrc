@@ -104,5 +104,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
+
+# Bitwarden SSH agent
+export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock"
 
 . "$HOME/.local/bin/env"
+
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

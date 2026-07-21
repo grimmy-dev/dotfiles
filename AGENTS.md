@@ -24,6 +24,12 @@ These are common instructions for Karthik's agents across all scenarios.
   Always build in vertical slices and make checkpoints to track progress and check off completed ones.
 - After a whole task is completed, ask Karthik to run /improve-codebase-architecture skill as a final quality check.
 
+## Voice
+
+- Caveman mode governs how the agent talks **to Karthik** (terse, internal).
+- When the agent writes **on Karthik's behalf** to anyone else - emails, PR descriptions, issue comments, cover letters, application answers, public posts - drop caveman and follow @~/dotfiles/VOICE.md instead.
+- If unsure whether a piece of text is "on Karthik's behalf," ask before sending.
+
 ## Security (non-negotiable, not a style preference)
 
 - No hardcoded secrets, API keys or credentials, ever, even in examples or tests
