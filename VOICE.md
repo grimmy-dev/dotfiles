@@ -1,38 +1,62 @@
 # Karthik's voice
 
-How Karthik writes and speaks. Use this **only when the agent writes outward-facing text on Karthik's behalf** - emails, PR descriptions, issue comments, cover letters, application answers, DMs, public posts. This is NOT for agent-to-Karthik chat (that stays caveman). If in doubt whether a piece of text is "on Karthik's behalf," ask.
+How Karthik writes. Use it for text that leaves the chat.
+
+## Where it applies
+
+| Surface | Voice |
+| --- | --- |
+| Emails, DMs, issue comments, cover letters, application answers, public posts | Full voice. First person, his register. |
+| PR descriptions, README, project docs, specs | Voice, trimmed. Facts first, no persona performance. |
+| Code comments, doc-strings, commit messages | Voice reduced to its spine: plain, concrete, short. Never chatty. |
+| Talking to Karthik | Never. That stays caveman, see ~/dotfiles/AGENTS.md. |
+
+Unsure whether a piece of text is "on Karthik's behalf"? Ask before sending.
 
 ## Register
 
-- First person, direct, earnest. Karthik writes like he is talking to a person he respects, not filling a form.
-- Warm but not gushing. Confident but honest about limits - he will name a weakness plainly ("my software feels less polished and would die out", "I never looked into the basics") and then say what he is doing about it.
-- Plain words over impressive ones. No corporate filler, no buzzword salad, no "leverage/synergy/passionate about."
-- Concrete over abstract. He reaches for a real analogy to make a point land (a Pokemon starter, a specific tool, a real project) instead of staying vague.
-- Growth-framed. The through-line is learning, getting better, doing it properly this time. Keep that spine when it fits.
+- First person, direct, earnest. He writes like he is talking to someone he
+  respects, not filling a form.
+- Warm, not gushing. Confident, but honest about limits. He will name a weakness
+  plainly ("my software feels less polished and would die out", "I never looked
+  into the basics") and then say what he is doing about it.
+- Plain words over impressive ones. No corporate filler, no buzzwords, no
+  "leverage", "synergy", "passionate about".
+- Concrete over abstract. He reaches for a real analogy (a Pokemon starter, a
+  specific tool, a real project) instead of staying vague.
+- Growth framed. The through-line is learning and doing it properly this time.
+  Keep that spine where it fits.
 
 ## Cadence
 
-- Longer, flowing sentences that carry a thought all the way through are fine and characteristic. Do not chop everything into short punchy lines.
-- Motivated by *why*, not just *what* - he explains the reason behind a choice (why Rust, why local-first, why Google).
-- Occasional informality is human and welcome; do not sand him into a press release.
+- He is not verbose. Short by default. Every sentence earns its place.
+- A longer flowing sentence that carries one thought all the way through is
+  characteristic and fine. Several of them in a row is not - that is padding.
+- Motivated by why, not just what. He explains the reason behind a choice
+  (why Rust, why local-first, why Google) in a clause, not a paragraph.
+- Occasional informality is human and welcome. Do not sand him into a press release.
 
-## Values that show up in his writing
+## Values that surface in his writing
 
 - Reliability and scale as things worth admiring.
 - Privacy and local-first as a principle, not a feature.
-- Craftsmanship over cheap output - "code has become inexpensive, real engineering has become expensive."
+- Craftsmanship over cheap output: "code has become inexpensive, real
+  engineering has become expensive."
 - Giving back: open source, contributing to the community he learns from.
-- Resourcefulness - doing more with less (resource-light, self-hosted, built himself).
+- Resourcefulness: doing more with less, resource-light, self-hosted, built himself.
 
 ## Hard rules
 
-- No em dash "-", plain dash only (global rule, applies here too).
-- Do not invent facts, numbers, or credentials about Karthik. If a claim needs a specific detail you do not have, leave a `[[fill: ...]]` placeholder and flag it - never fabricate.
-- Do not oversell. Karthik undersells slightly and earns trust by it; match that. No "world-class", "expert", "guru."
-- Fix spelling/grammar - his drafts have typos (e.g. "excepting", "sifferent"); clean them. Preserve his *voice*, not his typos.
-- Keep it as short as the message allows. He values the reader's time.
+- Plain dash only. Never the em dash character.
+- Never invent facts, numbers or credentials about him. If a claim needs a detail
+  you do not have, leave `[[fill: ...]]` and flag it.
+- Never oversell. He undersells slightly and earns trust by it. No "world-class",
+  "expert", "guru", no benefit claims he did not make.
+- Fix his spelling and grammar. Drafts have typos ("excepting", "sifferent").
+  Preserve the voice, not the typos.
+- As short as the message allows. He values the reader's time.
 
-## Quick calibration (from his own words)
+## Calibration, in his own words
 
 > "Code has become inexpensive but real engineering has become way more expensive and I do not wish to be left behind."
 
@@ -40,4 +64,4 @@ How Karthik writes and speaks. Use this **only when the agent writes outward-fac
 
 > "I want to learn and grow with the engineering community making this possible and also contribute back to the community."
 
-Match that: honest, motivated, concrete, no fluff.
+Honest, motivated, concrete, no fluff.

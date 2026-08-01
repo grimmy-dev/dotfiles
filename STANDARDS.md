@@ -1,63 +1,64 @@
-# Karthik's coding standards and rules
+# Karthik's coding standards
 
-These are the standards and rules for all Karthik's projects regardless of framework or language.
+Applies to every project, any language or framework.
 
-## Core Philosophy
+## Core
 
-- Code must be simple, readable and maintainable, no over engineering
-- Build for the requirement in front of you, not the one you imagine later (YAGNI)
-- Keep naming simple, clear, names reveal intent
-- Make it work, make it right, make it fast, in that order
-- Don't optimize before you measure, guessing at hotspots wastes time and adds complexity for nothing
+- Simple, readable, maintainable. No over engineering.
+- Build for the requirement in front of you, not the one you imagine later (YAGNI).
+- Names reveal intent and stay plain.
+- Make it work, make it right, make it fast, in that order.
+- Measure before optimizing. Guessing at hotspots buys complexity and nothing else.
 
 ## Functions
 
-- Keep it small, one level of abstraction per function
-- Fewer arguments is better, if more bundle into a model/struct
-- Clear separation, one function does one thing only
-- No hidden side effects behind an innocent name (Command-Query Separation)
+- Small, one level of abstraction, one job.
+- Fewer arguments. More than a few means they belong in a struct or model.
+- No hidden side effects behind an innocent name (Command-Query Separation).
 
 ## Structure
 
-- Prefer deep modules over shallow modules (simple interface, does real work behind it)
-- Follow SOLID principles
-- DRY - one authoritative source for each piece of knowledge, not just "no copy paste"
-- No broken windows, small decay left alone invites more decay
+- Deep modules over shallow ones: simple interface, real work behind it.
+- Follow SOLID.
+- DRY means one authoritative source per piece of knowledge, not just "no copy paste".
+- No broken windows. Small decay left alone invites more.
 
-## Error Handling
+## Errors
 
-- Fail fast and loud on programmer errors (bad input, broken invariants)
-- Fail gracefully with a useful message on expected runtime failures (network, I/O, user input)
-- Never swallow errors silently, no empty catch blocks
-- Never return null/None as a stand-in for "not found", use an explicit type
+- Fail fast and loud on programmer errors: bad input, broken invariants.
+- Fail gracefully with a useful message on expected runtime failures: network, I/O, user input.
+- Never swallow an error. No empty catch blocks.
+- Never return null or None to mean "not found". Use an explicit type.
 
 ## Documentation
 
-- Code is documented with google style doc-strings
-- Doc-strings are minimal and clear, no need to explain code/decisions in doc-strings
-- One line comments tell decisions and intent, only when necessary for Karthik to know it
+- Google style doc-strings, minimal and clear. They say what, not why.
+- Inline comments carry decisions and intent, and only where Karthik would
+  otherwise have to guess.
+- Prose in code and docs follows ~/dotfiles/VOICE.md.
 
 ## Testing
 
-- Test behavior, not implementation, refactors shouldn't break tests unless behavior changed
-- A flaky or untrusted test is worse than no test, fix it or flag it, don't ignore it
+- Test behavior, not implementation. A refactor should not break a test unless
+  behavior changed.
+- A flaky test is worse than no test. Fix it or flag it, never ignore it.
 
-## Version Control
+## Version control
 
-- Commit small, one logical change per commit, not a dump of unrelated edits
-- Commit message says why, not just what
-- Never commit secrets, credentials or generated build output, gitignore them from day one
-- Commit the lockfile, a build that only works on my machine is not reproducible
-- Don't commit commented-out code, delete it, git remembers it for me
+- One logical change per commit, not a dump of unrelated edits.
+- Commit message format and rules live in ~/dotfiles/AGENTS.md.
+- Never commit secrets, credentials or build output. Gitignore them from day one.
+- Commit the lockfile. A build that only works on one machine is not reproducible.
+- Delete commented-out code. Git remembers it.
 
 ## Dependencies
 
-- Add a dependency only when it earns its weight, a few lines of my own often beats a whole library
-- Pin versions, unpinned deps break silently on the next machine
-- Drop deps I stopped using, dead weight rots
+- Add one only when it earns its weight. A few lines of your own often beat a library.
+- Pin versions. Unpinned deps break silently on the next machine.
+- Drop deps you stopped using.
 
 ## Configuration
 
-- Config comes from the environment, not hardcoded in source
-- Same build runs in dev and prod, only the config changes
-- Secrets live outside the repo, always (see AGENTS.md security)
+- Config comes from the environment, never hardcoded.
+- Same build in dev and prod, only config changes.
+- Secrets live outside the repo, always (see AGENTS.md security).
