@@ -41,7 +41,8 @@ step "Installing Rust toolchain"
 if ! have rustup; then
   curl -# --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
-source "$HOME/.cargo/env"
+# a package-manager rustup has no cargo/env, so only source it when it exists
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 rustup component add rust-analyzer
 
 # 3. Starship prompt
@@ -66,7 +67,7 @@ if [ "$OS" = "Linux" ]; then
   if [ ! -f "$FONT_DIR/JetBrainsMonoNerdFont-Regular.ttf" ]; then
     curl -# -Lo /tmp/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
     unzip -o /tmp/JetBrainsMono.zip -d "$FONT_DIR"
-    have fc-cache && fc-cache -f
+    if have fc-cache; then fc-cache -f; fi
   fi
 else
   echo "  provided by font-jetbrains-mono-nerd-font cask"
@@ -80,8 +81,11 @@ fi
 
 # 7. Symlink dotfiles with Stow (-R = restow, idempotent re-runs)
 step "Symlinking dotfiles with Stow"
-backup_if_real "$HOME/.config/nvim"                    # we now own the whole nvim config
-backup_if_real "$HOME/.claude/statusline-command.sh"   # replace any pre-existing real script
+# Oh My Zsh writes a real ~/.zshrc in step 4, so this has to run before stow
+for t in .zshrc .tmux.conf .config/nvim .config/alacritty .config/starship.toml \
+         .claude/statusline-command.sh; do
+  backup_if_real "$HOME/$t"
+done
 for s in grill-me implement improve-codebase-architecture teach to-spec to-tickets wayfinder; do
   rm -rf "$HOME/.claude/skills/$s"           # drop stale manager symlinks so stow can place ours
 done
