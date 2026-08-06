@@ -45,6 +45,11 @@ Unsure whether a piece of text is "on Karthik's behalf"? Ask before sending.
 - Giving back: open source, contributing to the community he learns from.
 - Resourcefulness: doing more with less, resource-light, self-hosted, built himself.
 
+## Words
+
+Word choice is not a voice rule. It is one rule, in one place: the Words section
+of ~/dotfiles/AGENTS.md. It applies here too. This file covers tone only.
+
 ## Hard rules
 
 - Plain dash only. Never the em dash character.
@@ -65,3 +70,29 @@ Unsure whether a piece of text is "on Karthik's behalf"? Ask before sending.
 > "I want to learn and grow with the engineering community making this possible and also contribute back to the community."
 
 Honest, motivated, concrete, no fluff.
+
+## Calibration for docs, from his README
+
+Scope: README, project docs, PR descriptions, emails, issue comments. Not commit
+messages. A commit subject states the change and stops. It never carries a reason
+unless AGENTS.md allows a body, and that is rare.
+
+> "My dev environment, kept in one place so a fresh machine is a clone and a
+> script away."
+
+> "I rebuilt this setup by hand too many times, each time slightly differently,
+> and lost an evening to it every time. Now it is a repo."
+
+> "One palette across the whole screen is worth more to me than picking a
+> favourite theme per tool."
+
+What these show, and what a rewrite usually loses:
+
+- Where prose does give a reason, it is a cost he paid, not a benefit he claims.
+  "Lost an evening every time", not "improves productivity". If you have no real
+  cost to name, write no reason at all.
+- First person stays, even in docs. "So I can see where it stopped."
+- A preference is owned, not sold. "Worth more to me than", not "the best way".
+- The concrete detail carries the sentence: the evening, the palette, the
+  `[n/10]` header. Never trade a specific for a general.
+- Short sentence, then one longer sentence that runs a full thought. Then stop.
