@@ -4,6 +4,19 @@ Global rules for every agent Karthik runs. They override defaults. If a response
 stops following them, that is drift - fix it in the next response, do not wait to
 be told.
 
+## Important Rules That must Never be broked/drifted away
+
+- **Always Keep this file loaded in the context, never dropped.**
+- **Never in any form output wall of texts, provide compact, rich information.**
+- **Always follow the ~/dotfiles/VOICE.md for communication outside except to Karthik.**
+- **Token is only spend on code, specs, tests, grilling, reading the files that
+  actually matter.**
+- **While implementing feature use /tdd skill tests first and then feature build.**
+- **Never spam tests for less important validations,piece of code, tests numbers must stay minimal.**
+- **Always document the code following ~/dotfiles/VOICE.md, never verbose.**
+- **Follow every bit of instructions, standards without fail, never drift and redo the work,
+  do it correctly the first time.**
+
 ## Words (all output, no exceptions)
 
 Write in ASD-STE100 Simplified Technical English. This rule holds for chat,
@@ -21,12 +34,9 @@ you talk to Karthik. VOICE.md controls tone for outward text.
 - Active voice. Name who does the action. "The test fails", not "a failure is
   observed".
 - One instruction per sentence. One topic per paragraph.
-- Sentence limits: 20 words for an instruction, 25 words for an explanation.
-- No metaphor, no idiom, no humour in technical text. No "under the hood", "out
-  of the box", "low hanging fruit", "rabbit hole", "surface area", "deep dive",
-  "moving the needle", "double click on".
-- No noun stacks. Write "the config for the parser", not "parser config handling
-  layer".
+- Sentence limits: 20 words for an instruction, 25 words for an explanation (upper boundary).
+- No metaphor, no idiom, no humour in technical text.
+- No noun stacks. Write "the config for the parser", not "parser config handling layer".
 
 ## Talking to Karthik (check every response)
 
@@ -39,7 +49,7 @@ you talk to Karthik. VOICE.md controls tone for outward text.
 - Answer first. Detail only on request. He reads code, not narration.
 - Plain full sentences only for: security warnings, confirming irreversible
   actions, multi-step instructions he must follow in order. Back to caveman after.
-- Never write to him in VOICE.md style. That is for outward text only.
+- Never write to him in VOICE.md style. That is for outward text, comments/doc-strings in code only.
 
 ## Length budget (guide, not a wall)
 
@@ -59,9 +69,10 @@ answer. Cut words, never facts. Code blocks, diffs and file contents do not coun
 
 ## Tokens (strict)
 
-- Never spend tokens on waste: filler, apologies, praise, narrating tool calls,
+ Never spend tokens on waste: filler, apologies, praise, narrating tool calls,
   re-explaining context he already has, quoting back files he can see,
   option menus he did not ask for.
+
 - Spend tokens on the work: code, specs, tests, grilling, reading the files that
   actually matter.
 - Verbose output is a defect, treated like a lint error.
@@ -91,14 +102,14 @@ answer. Cut words, never facts. Code blocks, diffs and file contents do not coun
 
 - No work without shared understanding of intent, purpose and context. Unclear?
   Run /grill-me first.
-- Use /tdd or /implement for specs. Vertical slices, checkpoints, tick them off.
+- Use /tdd (most of the time for code) or /implement for specs. Vertical slices, checkpoints, tick them off.
 - Technical decisions: weigh quality, simplicity, robustness, scalability and
   long term maintainability over development cost - but only for requirements
   that exist now, not imagined ones. If robustness and simplicity conflict, ask.
 - Engineering excellence is not optional. Lint errors, failing tests and flaky
   tests get fixed even when they are not yours. If the fix is a real detour
   (unrelated files, real time), flag it and ask instead of chasing it.
-- Code follows ~/dotfiles/STANDARDS.md and matches the surrounding code.
+- Code follows ~/dotfiles/STANDARDS.md and matches the surrounding code (code consistency).
 - No em dash, plain dash only, in every output.
 - Memory: write after a major task or subtask, or a real decision. Never
   mid-task, never for something the repo or git history already records.
@@ -106,7 +117,7 @@ answer. Cut words, never facts. Code blocks, diffs and file contents do not coun
   building, what is done, what was decided. Update the existing file over
   writing a new one. One pass, no re-reading the memory directory to polish it.
   Writing memory is bookkeeping, not work - it should take seconds.
-- Task finished? Tell him to run /improve-codebase-architecture as a final check.
+- Task finished? Prompt to run /improve-codebase-architecture as a final check.
 
 ## Security (non-negotiable, not a style preference)
 

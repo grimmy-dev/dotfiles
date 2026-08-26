@@ -40,6 +40,7 @@ When two rules pull apart, use this order.
 - A function either answers a question or changes state. Never both.
 - No surprise behind a plain name. No hidden write, no hidden network call, no
   hidden global.
+- Try to get the work done with minimal computation as possible.
 
 ## Modules and boundaries
 
@@ -49,15 +50,14 @@ When two rules pull apart, use this order.
   which format or which order you chose inside.
 - Test the boundary. If a change inside the module breaks a test, the test
   reached too far in.
-- One change should touch one place. A change that forces edits in files that
+- **IMPORTANT** One change should touch one place. A change that forces edits in files that
   should not care means the boundary leaks. Say so.
 - Depend on the thing that changes least. Point the arrows at the stable side.
 - Keep pure logic apart from I/O. Pure logic is easy to test. I/O is not.
 
 ## Data and state
 
-- Make the wrong state impossible to build. A type that cannot hold bad data
-  beats a check that runs later.
+- Structure states based on the usecase, cachable state remain light compared to the ones that go to disk.
 - Validate untrusted input once, at the boundary, into a trusted type. Inside is
   then trusted.
 - Prefer values that do not change. Change them in one place if you must.
@@ -66,7 +66,7 @@ When two rules pull apart, use this order.
 
 ## Errors
 
-- Programmer error, broken invariant, impossible state: fail fast and loud.
+- Programmer error, broken invariant, impossible state: fail fast and loud and efficiently bubbled up to user.
 - Expected runtime failure such as network, disk or user input: handle it and
   give a message that says what failed and what to do.
 - Never swallow an error. No empty catch. No log-and-continue that pretends it
@@ -75,6 +75,8 @@ When two rules pull apart, use this order.
   type that says so.
 - An error message names the thing that failed and the value that caused it.
   It never includes a secret, a token or personal data.
+- Karthik ideology about errors: `errors are first-class values that must be explicitly
+  acknowledged and handled at compile time` the rust way of handling error where it applies and matters.
 
 ## Consistency
 
@@ -101,6 +103,8 @@ Fix these in code you touch. Do not go hunting through the whole repo.
 
 ## Tests
 
+- Always write tests before inplementing feature not the other way.
+- Keep the tests count minimal and only test place where there is absolute need.
 - Test behaviour, not implementation. A refactor must not break a test unless the
   behaviour changed.
 - A bug fix starts with a test that fails for that bug.
@@ -130,20 +134,24 @@ Fix these in code you touch. Do not go hunting through the whole repo.
 - Config comes from the environment. The same build runs in dev and prod. Only
   the config changes.
 - Secrets live outside the repo, always.
+- Always make the project manifest files clean and up-to-date.
 
 ## Version control
 
 - One logical change per commit. Never a dump of unrelated edits.
+- commit history can be used to determine a project timeline and rebuildale.
 - The commit builds and its tests pass on its own.
 - Never commit a secret or build output. Add them to gitignore on day one.
 - Commit message rules live in ~/dotfiles/AGENTS.md.
 
-## Documentation
+## Documentation **Requires Strict following of ~/dotfiles/VOICE.md**
 
+- Never output wall of texts, instead provide compacted, rich information.
 - Doc-strings say what the thing does, its inputs, its outputs and what it raises.
-  Keep them short.
+  Keep them short, follow Google doc-string style.
 - Comments carry the why: the decision, the trade-off, the reason for the odd
-  line. Only where a reader would otherwise guess wrong.
+  line. Only where a reader would otherwise guess wrong, never a text wall,
+  just compacted rich information.
 - A README says what it is, how to run it and how to test it. Nothing else is
   required.
 - Prose in code and docs follows the word rules in ~/dotfiles/AGENTS.md and the
@@ -159,5 +167,5 @@ Before you call a task finished:
 - New behaviour has a test. The fixed bug has a test.
 - No debug print, no scratch file, no leftover branch of dead code.
 - You read the whole diff yourself. Anything you cannot defend comes out.
-- A step failed or you skipped it? Say so plainly. Never report done over a
+- **Avoid at all cost** A step failed or you skipped it? Say so plainly. Never report done over a
   failing test.
